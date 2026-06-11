@@ -1,7 +1,5 @@
 {
   "ran": true,
   "passed": true,
-  "output": "\n\u003e get-secretmanager-secrets@3.0.0 test\n\u003e node --require ts-node/register --test-reporter spec --test tests/**/*.test.ts\n\n▶ Reference\n  ✔ parses \"out:projects/my-project/secrets/my-secret/versions/123\" (1.275594ms)\n  ✔ parses \"out:projects/my-project/secrets/my-secret\" (0.191929ms)\n  ✔ parses \"out:projects/my-project/locations/my-location/secrets/my-secret\" (0.189719ms)\n  ✔ parses \"out:my-project/my-secret/123\" (0.179713ms)\n  ✔ parses \"out:my-project/my-secret\" (0.169791ms)\n  ✔ parses \"out: my-project/my-secret\" (0.165794ms)\n  ✔ parses \"out : projects/ my-project/   secrets/\tmy-secret\" (0.160452ms)\n  ✔ errors on \"\" (0.547769ms)\n  ✔ errors on \"projects/my-project/secrets/my-secret/versions/123\" (0.317357ms)\n  ✔ errors on \"out:projects/my-project/pandas/my-location/secrets/my-secret\" (0.332691ms)\n✔ Reference (6.432925ms)\n▶ #parseSecretsRefs\n  ✔ empty string (0.740763ms)\n  ✔ multi value commas (0.470393ms)\n  ✔ multi value newlines (0.161355ms)\n  ✔ multi value carriage (0.186492ms)\n  ✔ multi value carriage newline (0.195556ms)\n  ✔ multi value empty lines (0.135921ms)\n  ✔ multi value commas (0.115067ms)\n  ✔ invalid input (0.215446ms)\n✔ #parseSecretsRefs (3.451226ms)\nℹ tests 20\nℹ suites 0\nℹ pass 20\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1448.556878\n",
-  "duration_ms": 2019,
   "exit_code": 0
 }
