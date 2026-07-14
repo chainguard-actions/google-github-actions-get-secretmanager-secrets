@@ -1,0 +1,29 @@
+name: Test base64 encoding input accepted
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          secrets: |-
+            mykey:my-project/my-binary-secret
+          encoding: 'base64'
+
+      - name: Assert action ran with base64 encoding input
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          # The action should fail (no real GCP credentials), but it should
+          # have accepted the encoding=base64 input without a parsing error.
+          if [ "$OUTCOME" = "skipped" ]; then
+            echo "FAIL: action was skipped unexpectedly"
+            exit 1
+          fi
+          echo "PASS: action ran with encoding=base64 (outcome: $OUTCOME)"

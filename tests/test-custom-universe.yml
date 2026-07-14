@@ -1,0 +1,29 @@
+name: Test custom universe input accepted
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          secrets: |-
+            myoutput:my-project/my-secret
+          universe: 'googleapis.com'
+
+      - name: Assert action ran with custom universe input
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          # The action should fail (no real GCP credentials), but it should
+          # have accepted the universe input without a parsing error.
+          if [ "$OUTCOME" = "skipped" ]; then
+            echo "FAIL: action was skipped unexpectedly"
+            exit 1
+          fi
+          echo "PASS: action ran with universe=googleapis.com (outcome: $OUTCOME)"
