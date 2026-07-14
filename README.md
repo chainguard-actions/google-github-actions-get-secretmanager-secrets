@@ -11,6 +11,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 |---------|-----|-----------------|
 | v0.1.0 | [`v0.1.0`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v0.1.0) | — |
 | v0.5.0 | [`v0.5.0`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v0.5.0) | — |
+| v2 | [`v2`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v2) | [`2b5f97c`](https://github.com/google-github-actions/get-secretmanager-secrets/commit/2b5f97c5a4b9c105e64646762ad4fc3f5128e6f5) |
 | v2.1.1 | [`v2.1.1`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v2.1.1) | — |
 | v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v2.2.0) | — |
 | v2.2.4 | [`v2.2.4`](https://github.com/chainguard-actions/google-github-actions-get-secretmanager-secrets/tree/v2.2.4) | — |
