@@ -1,0 +1,71 @@
+name: 'Integration'
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'release/**/*'
+  pull_request:
+    branches:
+      - 'main'
+      - 'release/**/*'
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  integration:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' # v4
+
+    - uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' # v4
+      with:
+        node-version: '20.x'
+
+    - name: 'npm build'
+      run: 'npm ci && npm run build'
+
+    - uses: 'google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed' # v2
+      with:
+        workload_identity_provider: '${{ vars.WIF_PROVIDER_NAME }}'
+        service_account: '${{ vars.SERVICE_ACCOUNT_EMAIL }}'
+
+    - id: 'secrets'
+      name: 'secrets'
+      uses: './'
+      with:
+        secrets: |-
+          token:${{ vars.SECRET_NAME }}
+          password:${{ vars.SECRET_VERSION_NAME }}
+          regional:${{ vars.REGIONAL_SECRET_NAME }}
+
+    - name: 'outputs'
+      env:
+        TOKEN: '${{ steps.secrets.outputs.token }}'
+        PASSWORD: '${{ steps.secrets.outputs.password }}'
+        REGIONAL: '${{ steps.secrets.outputs.regional }}'
+      run: echo "$TOKEN$PASSWORD$REGIONAL"
+
+    - id: 'secrets-encoded'
+      name: 'secrets-encoded'
+      uses: './'
+      with:
+        encoding: 'hex'
+        secrets: |-
+          token:${{ vars.SECRET_NAME }}
+          password:${{ vars.SECRET_VERSION_NAME }}
+          regional:${{ vars.REGIONAL_SECRET_NAME }}
+
+    - name: 'outputs-encoded'
+      env:
+        TOKEN: '${{ steps.secrets-encoded.outputs.token }}'
+        PASSWORD: '${{ steps.secrets-encoded.outputs.password }}'
+        REGIONAL: '${{ steps.secrets-encoded.outputs.regional }}'
+      run: echo "$TOKEN$PASSWORD$REGIONAL"

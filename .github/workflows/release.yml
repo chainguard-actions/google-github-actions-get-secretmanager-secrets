@@ -1,0 +1,16 @@
+name: 'Release'
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'release/**/*'
+
+permissions: {}
+
+jobs:
+  release:
+    if: |-
+      ${{ startsWith(github.event.head_commit.message, 'Release: v') }}
+    name: 'Release'
+    uses: 'google-github-actions/.github/.github/workflows/release.yml@7db31c4dda4d67c9f66fc070137881f1cb4c7c37' # v0
