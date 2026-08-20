@@ -1,4 +1,4 @@
-name: Test basic usage - no credentials
+name: Test encoding input
 on:
   workflow_dispatch:
 jobs:
@@ -12,7 +12,8 @@ jobs:
         continue-on-error: true
         with:
           secrets: |-
-            myoutput:my-project/my-secret
+            myoutput:my-project/my-binary-secret
+          encoding: base64
 
       - name: Assert action fails gracefully without GCP credentials
         env:
