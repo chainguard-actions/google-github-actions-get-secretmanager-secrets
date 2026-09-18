@@ -1,6 +1,0 @@
-{
-  "owner": "google-github-actions",
-  "name": "get-secretmanager-secrets",
-  "visibility": "internal",
-  "block_publish": false
-}
