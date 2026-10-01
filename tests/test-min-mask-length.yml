@@ -1,4 +1,4 @@
-name: Test basic usage - no credentials
+name: Test min_mask_length input
 on:
   workflow_dispatch:
 jobs:
@@ -12,6 +12,7 @@ jobs:
         with:
           secrets: |-
             my_secret:my-project/my-secret
+          min_mask_length: '8'
       - name: Assert action ran and failed gracefully (no GCP credentials)
         env:
           OUTCOME: ${{ steps.action.outcome }}
