@@ -4,8 +4,13 @@
   "version": "v3",
   "commit_sha": "bc9c54b29fdffb8a47776820a7d26e77b379d262",
   "url": "https://github.com/google-github-actions/get-secretmanager-secrets",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/google-github-actions/get-secretmanager-secrets/v3/sha256-704993b2aa4dd22f9b3b03d9fbd9cd5f0c1d2819407dbfb541e031c25703668c.tar.gz",
+    "sha256": "704993b2aa4dd22f9b3b03d9fbd9cd5f0c1d2819407dbfb541e031c25703668c",
+    "size_bytes": 320835
+  }
 }
